@@ -297,6 +297,8 @@ const EducationSection = () => {
                       onClick={() => {
                         if (article.id === 1) {
                           window.open('https://www.epa.gov/recycle/composting-home', '_blank');
+                        } else if (article.id === 2) {
+                          window.open('https://www.wwf.org.uk/updates/top-tips-reduce-your-plastic-footprint', '_blank');
                         } else {
                           setSelectedArticle(article.id);
                         }
