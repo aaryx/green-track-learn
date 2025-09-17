@@ -299,6 +299,8 @@ const EducationSection = () => {
                           window.open('https://www.epa.gov/recycle/composting-home', '_blank');
                         } else if (article.id === 2) {
                           window.open('https://www.wwf.org.uk/updates/top-tips-reduce-your-plastic-footprint', '_blank');
+                        } else if (article.id === 3) {
+                          window.open('https://pmc.ncbi.nlm.nih.gov/articles/PMC2963874/', '_blank');
                         } else {
                           setSelectedArticle(article.id);
                         }
