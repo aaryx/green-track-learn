@@ -294,7 +294,13 @@ const EducationSection = () => {
                     <div
                       key={article.id}
                       className="card-eco hover-lift cursor-pointer group"
-                      onClick={() => setSelectedArticle(article.id)}
+                      onClick={() => {
+                        if (article.id === 1) {
+                          window.open('https://www.epa.gov/recycle/composting-home', '_blank');
+                        } else {
+                          setSelectedArticle(article.id);
+                        }
+                      }}
                     >
                       <div className="space-y-4">
                         <div className="flex items-start justify-between">
