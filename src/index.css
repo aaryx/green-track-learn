@@ -2,41 +2,62 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Eco-friendly Design System for Waste Segregation Platform */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Core eco-friendly color palette - HSL values */
+    --background: 120 20% 98%;
+    --foreground: 120 10% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 120 10% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 120 10% 10%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary green theme */
+    --primary: 134 61% 41%; /* #28a745 converted to HSL */
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 134 45% 55%;
+    --primary-dark: 134 61% 35%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary earth tones */
+    --secondary: 120 15% 95%;
+    --secondary-foreground: 120 10% 20%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Accent colors for categories */
+    --accent-green: 120 60% 50%;
+    --accent-blue: 200 60% 50%;
+    --accent-orange: 30 80% 60%;
+    --accent-purple: 260 60% 55%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --muted: 120 10% 96%;
+    --muted-foreground: 120 5% 50%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 120 15% 90%;
+    --input: 120 15% 94%;
+    --ring: 134 61% 41%;
 
-    --radius: 0.5rem;
+    /* Enhanced radius for modern feel */
+    --radius: 1rem;
+
+    /* Custom gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(134 61% 41%), hsl(120 60% 50%));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(120 15% 98%));
+    --gradient-accent: linear-gradient(90deg, hsl(134 45% 55%), hsl(120 60% 50%));
+
+    /* Shadows */
+    --shadow-soft: 0 4px 6px -1px hsl(120 10% 10% / 0.1), 0 2px 4px -1px hsl(120 10% 10% / 0.06);
+    --shadow-medium: 0 10px 15px -3px hsl(120 10% 10% / 0.1), 0 4px 6px -2px hsl(120 10% 10% / 0.05);
+    --shadow-large: 0 20px 25px -5px hsl(120 10% 10% / 0.1), 0 10px 10px -5px hsl(120 10% 10% / 0.04);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --sidebar-background: 0 0% 98%;
 
@@ -101,5 +122,52 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  /* Hero Button Variant */
+  .btn-hero {
+    @apply bg-gradient-to-r from-primary to-primary-light text-primary-foreground px-8 py-4 rounded-2xl text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300;
+  }
+
+  /* Card Variants */
+  .card-eco {
+    @apply bg-white rounded-2xl p-6 shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-medium)] transition-all duration-300 border border-border/50;
+  }
+
+  .card-feature {
+    @apply bg-gradient-to-br from-white to-secondary/30 rounded-2xl p-8 shadow-[var(--shadow-medium)] hover:shadow-[var(--shadow-large)] transform hover:-translate-y-2 transition-all duration-300;
+  }
+
+  /* Interactive Elements */
+  .hover-lift {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-medium)];
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-accent-green bg-clip-text text-transparent;
+  }
+
+  /* Category Icons */
+  .icon-recycle {
+    @apply text-accent-green;
+  }
+  
+  .icon-compost {
+    @apply text-accent-orange;
+  }
+  
+  .icon-ewaste {
+    @apply text-accent-purple;
+  }
+  
+  .icon-plastic {
+    @apply text-accent-blue;
+  }
+
+  /* Smooth Scrolling */
+  html {
+    scroll-behavior: smooth;
   }
 }
