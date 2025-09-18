@@ -300,9 +300,9 @@ const EducationSection = () => {
                         } else if (article.id === 2) {
                           window.open('https://www.wwf.org.uk/updates/top-tips-reduce-your-plastic-footprint', '_blank');
                         } else if (article.id === 3) {
-                          window.open('https://tontoton.com/how-to-raise-waste-management-awareness/', '_blank');
-                        } else if (article.id === 4) {
-                          window.open('https://tontoton.com/how-to-raise-waste-management-awareness/', '_blank');
+                          window.open('https://www.teriin.org/article/e-waste-management-india-challenges-and-opportunities', '_blank');
+                        } else {
+                          setSelectedArticle(article.id);
                         }
                       }}
                     >
