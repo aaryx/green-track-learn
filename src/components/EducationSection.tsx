@@ -301,8 +301,8 @@ const EducationSection = () => {
                           window.open('https://www.wwf.org.uk/updates/top-tips-reduce-your-plastic-footprint', '_blank');
                         } else if (article.id === 3) {
                           window.open('https://tontoton.com/how-to-raise-waste-management-awareness/', '_blank');
-                        } else {
-                          setSelectedArticle(article.id);
+                        } else if (article.id === 4) {
+                          window.open('https://tontoton.com/how-to-raise-waste-management-awareness/', '_blank');
                         }
                       }}
                     >
