@@ -53,6 +53,7 @@ const HeroSection = ({ onSurveyClick }: HeroSectionProps) => {
               variant="outline" 
               size="lg"
               className="px-8 py-4 rounded-2xl border-2 border-primary/20 hover:border-primary/40 hover:bg-primary/5 transition-all duration-300"
+              onClick={() => window.open('https://greensutra.in/waste-segregation-all-you-need-to-know/', '_blank')}
             >
               Learn More
             </Button>
