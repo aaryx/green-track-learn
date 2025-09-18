@@ -148,9 +148,9 @@ const EducationSection = () => {
     {
       id: 1,
       title: "Waste Segregation 101",
-      description: "Learn the basics of proper waste separation and why it matters for our environment.",
+      description: "Learn the basics of proper waste segregation and why it matters for our environment.",
       duration: "12:30",
-      embedId: "vl3hQ6CDihc",
+      embedId: "W5rR4T7p2sQ",
       category: "Basics"
     },
     {
@@ -158,15 +158,15 @@ const EducationSection = () => {
       title: "Composting Basics",
       description: "A complete guide to setting up and maintaining your home composting system.",
       duration: "18:45",
-      embedId: "I8QyxlM_U5c",
+      embedId: "bMq_hfhXnBc",
       category: "Composting"
     },
     {
       id: 3,
       title: "E-waste Disposal Tips",
       description: "Discover the right way to dispose of electronic devices and where to take them.",
-      duration: "10:15",
-      embedId: "7uY6FiKp3Vk",
+      duration: "11:41",
+      embedId: "e-YTAYcZrbE",
       category: "E-waste"
     },
     {
@@ -174,7 +174,7 @@ const EducationSection = () => {
       title: "Plastic Reduction Challenge",
       description: "30-day challenge to reduce single-use plastics in your daily life.",
       duration: "15:20",
-      embedId: "O7P4S1OeKqg",
+      embedId: "kHxplaKKVMw",
       category: "Plastic Reduction"
     }
   ];
