@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ExternalLink, FileText } from "lucide-react";
 
 const SurveySection = () => {
-  const surveyUrl = "https://forms.gle/your-form-link";
+  const surveyUrl = "https://docs.google.com/forms/d/e/1FAIpQLSctp754PzgZG2uCpOm2gFdUZ3nYIToGHXbK15N6eUw0rftsfw/viewform?usp=header";
 
   const openInNewTab = () => {
     window.open(surveyUrl, "_blank");
@@ -27,37 +27,22 @@ const SurveySection = () => {
           </p>
         </div>
 
-        {/* Survey Embed */}
+        {/* Survey Button */}
         <div className="card-eco space-y-6 animate-slide-up">
-          <div className="flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center">
+          <div className="text-center space-y-6">
             <div>
-              <h3 className="text-xl font-semibold text-foreground">Community Waste Survey</h3>
+              <h3 className="text-xl font-semibold text-foreground mb-2">Community Waste Survey</h3>
               <p className="text-sm text-muted-foreground">Takes approximately 5-7 minutes</p>
             </div>
+            
             <Button 
               onClick={openInNewTab}
-              variant="outline"
-              className="shrink-0 hover:bg-primary/5 hover:border-primary/40"
+              size="lg"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-lg font-semibold"
             >
-              Open in New Tab
-              <ExternalLink className="ml-2 h-4 w-4" />
+              FILL SURVEY
+              <ExternalLink className="ml-2 h-5 w-5" />
             </Button>
-          </div>
-
-          {/* Iframe Container */}
-          <div className="relative w-full h-[600px] rounded-xl overflow-hidden border border-border/50 bg-white">
-            <iframe
-              src={surveyUrl}
-              width="100%"
-              height="100%"
-              frameBorder="0"
-              marginHeight={0}
-              marginWidth={0}
-              className="rounded-xl"
-              title="Community Waste Management Survey"
-            >
-              Loading survey...
-            </iframe>
           </div>
 
           {/* Survey Info */}
