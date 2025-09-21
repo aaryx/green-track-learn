@@ -9,7 +9,7 @@ const ResultsSection = () => {
           <iframe 
             width="100%" 
             height="100%" 
-            src="https://lookerstudio.google.com/embed/reporting/vz31eaQDSQA/page/1M" 
+            src="https://lookerstudio.google.com/embed/reporting/a63888c5-5f4b-4f93-a1a9-ef5a4573283f/page/1M" 
             frameBorder="0" 
             style={{border: 0}} 
             allowFullScreen
@@ -18,7 +18,7 @@ const ResultsSection = () => {
           </iframe>
         </div>
 
-        {/* Suggestions / Recommendations */}
+        {/* Suggestions / Recommendations (static) */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
           <div className="p-6 bg-card rounded-2xl shadow-sm">
             <h3 className="font-semibold text-lg text-foreground">Promote Composting</h3>
@@ -26,7 +26,7 @@ const ResultsSection = () => {
           </div>
           <div className="p-6 bg-card rounded-2xl shadow-sm">
             <h3 className="font-semibold text-lg text-foreground">Improve Collection</h3>
-            <p className="text-muted-foreground mt-2">Overflow issues → suggest more frequent pickups.</p>
+            <p className="text-muted-foreground mt-2">Overflow issues → suggest more frequent waste pickups.</p>
           </div>
           <div className="p-6 bg-card rounded-2xl shadow-sm">
             <h3 className="font-semibold text-lg text-foreground">Awareness Campaigns</h3>
