@@ -1,25 +1,71 @@
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
 const ResultsSection = () => {
+  const charts = [
+    {
+      title: "Age Data",
+      src: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRttnWCg0b1Gwq3L0zNxphphnwM5HmaBtHsee8JFcr7NnOE9u8rRLMf6gl_aEv8TvnltBvpkOClIl9C/pubchart?oid=1853520302&format=interactive"
+    },
+    {
+      title: "Type of Place Data Collected",
+      src: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRttnWCg0b1Gwq3L0zNxphphnwM5HmaBtHsee8JFcr7NnOE9u8rRLMf6gl_aEv8TvnltBvpkOClIl9C/pubchart?oid=1697145631&format=interactive"
+    },
+    {
+      title: "Most Generated Waste",
+      src: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRttnWCg0b1Gwq3L0zNxphphnwM5HmaBtHsee8JFcr7NnOE9u8rRLMf6gl_aEv8TvnltBvpkOClIl9C/pubchart?oid=757658263&format=interactive"
+    },
+    {
+      title: "How Much Waste Generated",
+      src: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRttnWCg0b1Gwq3L0zNxphphnwM5HmaBtHsee8JFcr7NnOE9u8rRLMf6gl_aEv8TvnltBvpkOClIl9C/pubchart?oid=133653367&format=interactive"
+    },
+    {
+      title: "How Waste is Usually Disposed",
+      src: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRttnWCg0b1Gwq3L0zNxphphnwM5HmaBtHsee8JFcr7NnOE9u8rRLMf6gl_aEv8TvnltBvpkOClIl9C/pubchart?oid=1478128583&format=interactive"
+    }
+  ];
+
   return (
     <section className="py-12 bg-secondary/20">
-      <div className="container mx-auto text-center">
-        <h2 className="text-3xl font-bold mb-6 text-foreground">Community Insights</h2>
+      <div className="container mx-auto">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold mb-6 text-foreground">Community Insights</h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            Explore the data collected from our community waste management survey through these interactive charts.
+          </p>
+        </div>
 
-        {/* Embedded Looker Studio Dashboard */}
-        <div className="w-full h-[800px] shadow-lg rounded-2xl overflow-hidden">
-          <iframe 
-            width="100%" 
-            height="100%" 
-            src="https://lookerstudio.google.com/embed/reporting/a63888c5-5f4b-4f93-a1a9-ef5a4573283f/page/1M" 
-            frameBorder="0" 
-            style={{border: 0}} 
-            allowFullScreen
-            title="Community Waste Management Dashboard"
-          >
-          </iframe>
+        {/* Interactive Charts Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+          {charts.map((chart, index) => (
+            <Card key={index} className="overflow-hidden">
+              <CardHeader className="pb-4">
+                <CardTitle className="text-xl font-semibold text-center">
+                  {chart.title}
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="p-0">
+                <div className="w-full h-[400px] overflow-hidden">
+                  <iframe
+                    width="100%"
+                    height="100%"
+                    seamless
+                    frameBorder="0"
+                    scrolling="no"
+                    src={chart.src}
+                    title={chart.title}
+                    className="w-full h-full"
+                  />
+                </div>
+              </CardContent>
+            </Card>
+          ))}
         </div>
 
         {/* Suggestions / Recommendations (static) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+        <div className="text-center mb-8">
+          <h3 className="text-2xl font-semibold text-foreground mb-6">Recommendations</h3>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="p-6 bg-card rounded-2xl shadow-sm">
             <h3 className="font-semibold text-lg text-foreground">Promote Composting</h3>
             <p className="text-muted-foreground mt-2">Low segregation rate → conduct composting workshops.</p>
