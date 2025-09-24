@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { 
   BookOpen, 
   Play, 
@@ -9,13 +10,19 @@ import {
   Leaf,
   Recycle,
   Smartphone,
-  Users
+  Users,
+  X,
+  Brain
 } from "lucide-react";
 
 const EducationSection = () => {
   const [activeTab, setActiveTab] = useState<"articles" | "videos">("articles");
   const [selectedArticle, setSelectedArticle] = useState<number | null>(null);
   const [completedVideos, setCompletedVideos] = useState<number[]>([]);
+  const [showQuiz, setShowQuiz] = useState(false);
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [userAnswers, setUserAnswers] = useState<number[]>([]);
+  const [quizComplete, setQuizComplete] = useState(false);
 
   const articles = [
     {
@@ -195,6 +202,121 @@ const EducationSection = () => {
       case "Awareness": return Users;
       default: return BookOpen;
     }
+  };
+
+  const quizQuestions = [
+    {
+      question: "Which bin should you put vegetable peels in?",
+      options: ["Blue bin", "Green bin", "Red bin", "Yellow bin"],
+      correct: 1
+    },
+    {
+      question: "Which of these is non-biodegradable waste?",
+      options: ["Paper", "Plastic bottle", "Food waste", "Cotton cloth"],
+      correct: 1
+    },
+    {
+      question: "What does the ♻️ recycling symbol mean?",
+      options: ["Product is expensive", "Product can be reused", "Product is biodegradable", "Product is organic"],
+      correct: 1
+    },
+    {
+      question: "Which of these items is e-waste?",
+      options: ["Broken glass", "Mobile phone", "Banana peel", "Old newspaper"],
+      correct: 1
+    },
+    {
+      question: "Which is the best method to handle kitchen waste?",
+      options: ["Composting", "Burning", "Throwing in dustbin", "Dumping in river"],
+      correct: 0
+    },
+    {
+      question: "Which gas is mainly produced in landfills?",
+      options: ["Oxygen", "Methane", "Carbon dioxide", "Nitrogen"],
+      correct: 1
+    },
+    {
+      question: "Which of these is hazardous waste?",
+      options: ["Plastic bag", "Paint can", "Cardboard box", "Fruit peel"],
+      correct: 1
+    },
+    {
+      question: "What is the first step in waste management?",
+      options: ["Dumping", "Segregation", "Recycling", "Composting"],
+      correct: 1
+    },
+    {
+      question: "Which waste goes in the blue bin (India guidelines)?",
+      options: ["Plastic bottles", "Food waste", "Medical waste", "Garden leaves"],
+      correct: 0
+    },
+    {
+      question: "Which of these is a single-use plastic?",
+      options: ["Cloth bag", "Plastic straw", "Metal spoon", "Steel bottle"],
+      correct: 1
+    },
+    {
+      question: "Which is the correct 3R principle order?",
+      options: ["Recycle → Reduce → Reuse", "Reduce → Reuse → Recycle", "Reuse → Recycle → Reduce", "Reduce → Recycle → Reuse"],
+      correct: 1
+    },
+    {
+      question: "Which of these wastes is biodegradable?",
+      options: ["Banana peel", "Plastic wrapper", "Glass bottle", "Aluminum foil"],
+      correct: 0
+    },
+    {
+      question: "What should you do with expired medicines?",
+      options: ["Throw in normal bin", "Give to pharmacy/hospital", "Compost them", "Flush in toilet"],
+      correct: 1
+    },
+    {
+      question: "Which of these practices helps reduce plastic waste?",
+      options: ["Using cloth bags", "Buying bottled water daily", "Burning plastics", "Throwing plastics in landfill"],
+      correct: 0
+    },
+    {
+      question: "Compost is rich in which nutrient?",
+      options: ["Nitrogen", "Iron", "Copper", "Silver"],
+      correct: 0
+    }
+  ];
+
+  const handleQuizAnswer = (answerIndex: number) => {
+    const newAnswers = [...userAnswers];
+    newAnswers[currentQuestion] = answerIndex;
+    setUserAnswers(newAnswers);
+  };
+
+  const handleNextQuestion = () => {
+    if (currentQuestion < quizQuestions.length - 1) {
+      setCurrentQuestion(currentQuestion + 1);
+    } else {
+      setQuizComplete(true);
+    }
+  };
+
+  const calculateScore = () => {
+    return userAnswers.reduce((score, answer, index) => {
+      return score + (answer === quizQuestions[index].correct ? 1 : 0);
+    }, 0);
+  };
+
+  const getResultMessage = (score: number) => {
+    if (score >= 12) {
+      return { emoji: "🎉", message: "Excellent! You have great knowledge about Waste Management!" };
+    } else if (score >= 5) {
+      return { emoji: "✨", message: "Good effort! Keep learning and you'll become a waste warrior." };
+    } else {
+      return { emoji: "📘", message: "Don't worry! Keep practicing to improve your knowledge." };
+    }
+  };
+
+  const resetQuiz = () => {
+    setCurrentQuestion(0);
+    setUserAnswers([]);
+    setQuizComplete(false);
+    setShowQuiz(false);
   };
 
   return (
@@ -416,6 +538,135 @@ const EducationSection = () => {
             </div>
           </div>
         )}
+
+        {/* Quiz Button */}
+        <div className="text-center animate-fade-in">
+          <Button
+            onClick={() => setShowQuiz(true)}
+            size="lg"
+            className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 text-lg font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+          >
+            <Brain className="h-6 w-6 mr-3" />
+            Test Your Knowledge Now
+          </Button>
+        </div>
+
+        {/* Quiz Modal */}
+        <Dialog open={showQuiz} onOpenChange={setShowQuiz}>
+          <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+            <DialogHeader className="relative">
+              <DialogTitle className="text-2xl font-bold text-center text-green-600">
+                Waste Management Quiz
+              </DialogTitle>
+              <Button
+                variant="ghost"
+                size="sm"
+                className="absolute right-0 top-0 h-8 w-8 p-0"
+                onClick={() => resetQuiz()}
+              >
+                <X className="h-4 w-4" />
+              </Button>
+            </DialogHeader>
+
+            {!quizComplete ? (
+              <div className="space-y-6">
+                {/* Progress Bar */}
+                <div className="space-y-2">
+                  <div className="flex justify-between text-sm text-muted-foreground">
+                    <span>Question {currentQuestion + 1} of {quizQuestions.length}</span>
+                    <span>{Math.round(((currentQuestion + 1) / quizQuestions.length) * 100)}%</span>
+                  </div>
+                  <div className="w-full bg-muted rounded-full h-2">
+                    <div 
+                      className="bg-green-600 rounded-full h-2 transition-all duration-300"
+                      style={{ width: `${((currentQuestion + 1) / quizQuestions.length) * 100}%` }}
+                    />
+                  </div>
+                </div>
+
+                {/* Question */}
+                <div className="space-y-4">
+                  <h3 className="text-xl font-semibold text-foreground">
+                    {quizQuestions[currentQuestion].question}
+                  </h3>
+
+                  {/* Answer Options */}
+                  <div className="space-y-3">
+                    {quizQuestions[currentQuestion].options.map((option, index) => (
+                      <Button
+                        key={index}
+                        variant={userAnswers[currentQuestion] === index ? "default" : "outline"}
+                        className={`w-full justify-start text-left p-4 h-auto ${
+                          userAnswers[currentQuestion] === index 
+                            ? "bg-green-600 hover:bg-green-700 text-white" 
+                            : "hover:bg-green-50"
+                        }`}
+                        onClick={() => handleQuizAnswer(index)}
+                      >
+                        <span className="font-medium mr-3">
+                          {String.fromCharCode(65 + index)}.
+                        </span>
+                        {option}
+                      </Button>
+                    ))}
+                  </div>
+
+                  {/* Next Button */}
+                  <div className="flex justify-center pt-4">
+                    <Button
+                      onClick={handleNextQuestion}
+                      disabled={userAnswers[currentQuestion] === undefined}
+                      size="lg"
+                      className="bg-green-600 hover:bg-green-700 text-white px-8"
+                    >
+                      {currentQuestion < quizQuestions.length - 1 ? "Next Question" : "See Results"}
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              /* Quiz Results */
+              <div className="text-center space-y-6">
+                <div className="space-y-4">
+                  <div className="text-6xl">
+                    {getResultMessage(calculateScore()).emoji}
+                  </div>
+                  <h3 className="text-2xl font-bold text-foreground">
+                    Quiz Complete!
+                  </h3>
+                  <div className="text-4xl font-bold text-green-600">
+                    {calculateScore()}/{quizQuestions.length}
+                  </div>
+                  <p className="text-lg text-muted-foreground max-w-md mx-auto">
+                    {getResultMessage(calculateScore()).message}
+                  </p>
+                </div>
+
+                <div className="flex gap-4 justify-center">
+                  <Button
+                    onClick={resetQuiz}
+                    variant="outline"
+                    size="lg"
+                    className="px-6"
+                  >
+                    Close
+                  </Button>
+                  <Button
+                    onClick={() => {
+                      setCurrentQuestion(0);
+                      setUserAnswers([]);
+                      setQuizComplete(false);
+                    }}
+                    size="lg"
+                    className="bg-green-600 hover:bg-green-700 text-white px-6"
+                  >
+                    Take Quiz Again
+                  </Button>
+                </div>
+              </div>
+            )}
+          </DialogContent>
+        </Dialog>
       </div>
     </section>
   );
