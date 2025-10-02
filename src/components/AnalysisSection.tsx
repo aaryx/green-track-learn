@@ -132,15 +132,15 @@ const AnalysisSection = () => {
                 </div>
               </div>
             </div>
-            <div className="bg-primary/10 p-4 rounded-lg flex justify-center overflow-auto">
+            <div className="bg-primary/10 p-4 rounded-lg flex justify-center">
               <iframe 
-                width="800" 
-                height="500" 
+                width="600" 
+                height="400" 
                 seamless 
                 frameBorder="0" 
                 scrolling="no" 
                 src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRttnWCg0b1Gwq3L0zNxphphnwM5HmaBtHsee8JFcr7NnOE9u8rRLMf6gl_aEv8TvnltBvpkOClIl9C/pubchart?oid=757658263&amp;format=interactive"
-                className="w-full"
+                className="max-w-full"
               ></iframe>
             </div>
           </CardContent>
