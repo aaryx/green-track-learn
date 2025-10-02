@@ -1,22 +1,31 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
 const ResultsSection = () => {
-  const charts = [{
-    title: "Age Data",
-    src: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRttnWCg0b1Gwq3L0zNxphphnwM5HmaBtHsee8JFcr7NnOE9u8rRLMf6gl_aEv8TvnltBvpkOClIl9C/pubchart?oid=1853520302&format=interactive"
-  }, {
-    title: "Type of Place Data Collected",
-    src: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRttnWCg0b1Gwq3L0zNxphphnwM5HmaBtHsee8JFcr7NnOE9u8rRLMf6gl_aEv8TvnltBvpkOClIl9C/pubchart?oid=1697145631&format=interactive"
-  }, {
-    title: "Most Generated Waste",
-    src: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRttnWCg0b1Gwq3L0zNxphphnwM5HmaBtHsee8JFcr7NnOE9u8rRLMf6gl_aEv8TvnltBvpkOClIl9C/pubchart?oid=757658263&format=interactive"
-  }, {
-    title: "How Much Waste Generated",
-    src: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRttnWCg0b1Gwq3L0zNxphphnwM5HmaBtHsee8JFcr7NnOE9u8rRLMf6gl_aEv8TvnltBvpkOClIl9C/pubchart?oid=133653367&format=interactive"
-  }, {
-    title: "How Waste is Usually Disposed",
-    src: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRttnWCg0b1Gwq3L0zNxphphnwM5HmaBtHsee8JFcr7NnOE9u8rRLMf6gl_aEv8TvnltBvpkOClIl9C/pubchart?oid=1478128583&format=interactive"
-  }];
-  return <section className="py-12 bg-secondary/20">
+  const charts = [
+    {
+      title: "Age Data",
+      src: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRttnWCg0b1Gwq3L0zNxphphnwM5HmaBtHsee8JFcr7NnOE9u8rRLMf6gl_aEv8TvnltBvpkOClIl9C/pubchart?oid=1853520302&format=interactive"
+    },
+    {
+      title: "Type of Place Data Collected",
+      src: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRttnWCg0b1Gwq3L0zNxphphnwM5HmaBtHsee8JFcr7NnOE9u8rRLMf6gl_aEv8TvnltBvpkOClIl9C/pubchart?oid=1697145631&format=interactive"
+    },
+    {
+      title: "Most Generated Waste",
+      src: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRttnWCg0b1Gwq3L0zNxphphnwM5HmaBtHsee8JFcr7NnOE9u8rRLMf6gl_aEv8TvnltBvpkOClIl9C/pubchart?oid=757658263&format=interactive"
+    },
+    {
+      title: "How Much Waste Generated",
+      src: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRttnWCg0b1Gwq3L0zNxphphnwM5HmaBtHsee8JFcr7NnOE9u8rRLMf6gl_aEv8TvnltBvpkOClIl9C/pubchart?oid=133653367&format=interactive"
+    },
+    {
+      title: "How Waste is Usually Disposed",
+      src: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRttnWCg0b1Gwq3L0zNxphphnwM5HmaBtHsee8JFcr7NnOE9u8rRLMf6gl_aEv8TvnltBvpkOClIl9C/pubchart?oid=1478128583&format=interactive"
+    }
+  ];
+
+  return (
+    <section className="py-12 bg-secondary/20">
       <div className="container mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-6 text-foreground">Community Insights</h2>
@@ -27,14 +36,29 @@ const ResultsSection = () => {
 
         {/* Interactive Charts Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-          {charts.map((chart, index) => <Card key={index} className="overflow-hidden">
-              
+          {charts.map((chart, index) => (
+            <Card key={index} className="overflow-hidden">
+              <CardHeader className="pb-4">
+                <CardTitle className="text-xl font-semibold text-center">
+                  {chart.title}
+                </CardTitle>
+              </CardHeader>
               <CardContent className="p-0">
                 <div className="w-full h-[400px] overflow-hidden">
-                  <iframe width="100%" height="100%" seamless frameBorder="0" scrolling="no" src={chart.src} title={chart.title} className="w-full h-full" />
+                  <iframe
+                    width="100%"
+                    height="100%"
+                    seamless
+                    frameBorder="0"
+                    scrolling="no"
+                    src={chart.src}
+                    title={chart.title}
+                    className="w-full h-full"
+                  />
                 </div>
               </CardContent>
-            </Card>)}
+            </Card>
+          ))}
         </div>
 
         {/* Suggestions / Recommendations (static) */}
@@ -56,6 +80,8 @@ const ResultsSection = () => {
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default ResultsSection;
