@@ -320,51 +320,51 @@ const EducationSection = () => {
   };
 
   return (
-    <section className="py-16 bg-gradient-to-b from-background to-secondary/20">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+    <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-background to-secondary/20">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-10 md:space-y-12">
         {/* Header */}
-        <div className="text-center space-y-4 animate-fade-in">
+        <div className="text-center space-y-3 sm:space-y-4 animate-fade-in">
           <div className="flex justify-center">
-            <div className="p-4 bg-gradient-to-r from-primary/10 to-primary-light/10 rounded-2xl">
-              <BookOpen className="h-12 w-12 text-primary" />
+            <div className="p-3 sm:p-4 bg-gradient-to-r from-primary/10 to-primary-light/10 rounded-2xl">
+              <BookOpen className="h-10 w-10 sm:h-12 sm:w-12 text-primary" />
             </div>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground px-4">
             Learn & <span className="text-gradient">Take Action</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
             Expand your knowledge with our comprehensive educational resources, 
             from practical guides to interactive video courses.
           </p>
         </div>
 
         {/* Tab Navigation */}
-        <div className="flex justify-center animate-slide-up">
-          <div className="bg-white rounded-2xl p-2 shadow-[var(--shadow-soft)] border border-border/50">
-            <div className="flex gap-2">
+        <div className="flex justify-center animate-slide-up px-4">
+          <div className="bg-white rounded-2xl p-1.5 sm:p-2 shadow-[var(--shadow-soft)] border border-border/50 w-full sm:w-auto">
+            <div className="flex gap-1 sm:gap-2">
               <Button
                 onClick={() => setActiveTab("articles")}
                 variant={activeTab === "articles" ? "default" : "ghost"}
-                className={`px-6 py-2 rounded-xl transition-all duration-300 ${
+                className={`flex-1 sm:flex-none px-4 sm:px-6 py-2 rounded-xl transition-all duration-300 text-sm sm:text-base ${
                   activeTab === "articles" 
                     ? "bg-primary text-primary-foreground shadow-md" 
                     : "hover:bg-primary/5"
                 }`}
               >
-                <BookOpen className="h-4 w-4 mr-2" />
-                Articles
+                <BookOpen className="h-3 w-3 sm:h-4 sm:w-4 sm:mr-2" />
+                <span className="hidden sm:inline">Articles</span>
               </Button>
               <Button
                 onClick={() => setActiveTab("videos")}
                 variant={activeTab === "videos" ? "default" : "ghost"}
-                className={`px-6 py-2 rounded-xl transition-all duration-300 ${
+                className={`flex-1 sm:flex-none px-4 sm:px-6 py-2 rounded-xl transition-all duration-300 text-sm sm:text-base ${
                   activeTab === "videos" 
                     ? "bg-primary text-primary-foreground shadow-md" 
                     : "hover:bg-primary/5"
                 }`}
               >
-                <Play className="h-4 w-4 mr-2" />
-                Video Courses
+                <Play className="h-3 w-3 sm:h-4 sm:w-4 sm:mr-2" />
+                <span className="hidden sm:inline">Video Courses</span>
               </Button>
             </div>
           </div>
@@ -409,7 +409,7 @@ const EducationSection = () => {
               </div>
             ) : (
               // Articles Grid
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 {articles.map((article) => {
                   const IconComponent = getCategoryIcon(article.category);
                   return (
@@ -468,17 +468,17 @@ const EducationSection = () => {
 
         {/* Videos Section */}
         {activeTab === "videos" && (
-          <div className="space-y-8 animate-fade-in">
-            <div className="text-center space-y-2">
-              <h3 className="text-2xl font-bold text-foreground">Video Course Modules</h3>
-              <p className="text-muted-foreground">
+          <div className="space-y-6 sm:space-y-8 animate-fade-in">
+            <div className="text-center space-y-2 px-4">
+              <h3 className="text-xl sm:text-2xl font-bold text-foreground">Video Course Modules</h3>
+              <p className="text-sm sm:text-base text-muted-foreground">
                 Interactive learning with progress tracking
               </p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
               {videos.map((video) => (
-                <div key={video.id} className="card-eco space-y-4">
+                <div key={video.id} className="card-eco space-y-3 sm:space-y-4">
                   <div className="aspect-video rounded-xl overflow-hidden bg-muted">
                     <iframe
                       src={`https://www.youtube.com/embed/${video.embedId}`}
@@ -540,31 +540,31 @@ const EducationSection = () => {
         )}
 
         {/* Quiz Button */}
-        <div className="text-center animate-fade-in">
+        <div className="text-center animate-fade-in px-4">
           <Button
             onClick={() => setShowQuiz(true)}
             size="lg"
-            className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 text-lg font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+            className="w-full sm:w-auto bg-green-600 hover:bg-green-700 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
           >
-            <Brain className="h-6 w-6 mr-3" />
+            <Brain className="h-5 w-5 sm:h-6 sm:w-6 mr-2 sm:mr-3" />
             Test Your Knowledge Now
           </Button>
         </div>
 
         {/* Quiz Modal */}
         <Dialog open={showQuiz} onOpenChange={setShowQuiz}>
-          <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
-            <DialogHeader className="relative">
-              <DialogTitle className="text-2xl font-bold text-center text-green-600">
+          <DialogContent className="max-w-[95vw] sm:max-w-2xl max-h-[90vh] overflow-y-auto p-4 sm:p-6">
+            <DialogHeader className="relative pb-2">
+              <DialogTitle className="text-xl sm:text-2xl font-bold text-center text-green-600 pr-8">
                 Waste Management Quiz
               </DialogTitle>
               <Button
                 variant="ghost"
                 size="sm"
-                className="absolute right-0 top-0 h-8 w-8 p-0"
+                className="absolute right-0 top-0 h-7 w-7 sm:h-8 sm:w-8 p-0"
                 onClick={() => resetQuiz()}
               >
-                <X className="h-4 w-4" />
+                <X className="h-3 w-3 sm:h-4 sm:w-4" />
               </Button>
             </DialogHeader>
 
