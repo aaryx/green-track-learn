@@ -40,16 +40,16 @@ const ResultsSection = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent className="p-0">
-                <div className="w-full aspect-video sm:aspect-auto sm:h-[300px] md:h-[350px] lg:h-[400px] overflow-hidden">
+                <div className="w-full overflow-hidden">
                   <iframe
-                    width="100%"
-                    height="100%"
+                    width="600"
+                    height="371"
                     seamless
                     frameBorder="0"
                     scrolling="no"
                     src={chart.src}
                     title={chart.title}
-                    className="w-full h-full"
+                    className="w-full aspect-video sm:w-[600px] sm:h-[371px] sm:aspect-auto"
                   />
                 </div>
               </CardContent>

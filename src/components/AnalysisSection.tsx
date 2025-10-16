@@ -92,7 +92,7 @@ const AnalysisSection = () => {
                 frameBorder="0" 
                 scrolling="no" 
                 src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRttnWCg0b1Gwq3L0zNxphphnwM5HmaBtHsee8JFcr7NnOE9u8rRLMf6gl_aEv8TvnltBvpkOClIl9C/pubchart?oid=820728412&amp;format=interactive"
-                className="w-full max-w-[600px] h-[250px] sm:h-[300px] md:h-[371px] mx-auto"
+                className="w-full aspect-video sm:w-[600px] sm:h-[371px] sm:aspect-auto mx-auto"
               ></iframe>
             </div>
           </CardContent>
@@ -148,7 +148,7 @@ const AnalysisSection = () => {
                 frameBorder="0" 
                 scrolling="no" 
                 src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRttnWCg0b1Gwq3L0zNxphphnwM5HmaBtHsee8JFcr7NnOE9u8rRLMf6gl_aEv8TvnltBvpkOClIl9C/pubchart?oid=757658263&amp;format=interactive"
-                className="max-w-full"
+                className="w-full aspect-video sm:w-[600px] sm:h-[400px] sm:aspect-auto"
               ></iframe>
             </div>
           </CardContent>
