@@ -31,7 +31,7 @@ const ResultsSection = () => {
         </div>
 
         {/* Interactive Charts Grid */}
-        <div className="chart-section grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-2 sm:mb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-12">
           {charts.map((chart, index) => (
             <Card key={index} className="overflow-hidden">
               <CardHeader className="pb-3 sm:pb-4 px-4 sm:px-6">
@@ -56,7 +56,6 @@ const ResultsSection = () => {
             </Card>
           ))}
         </div>
-        <div className="slide-hint mb-8">👉 Slide left to view more</div>
 
         {/* Suggestions / Recommendations (static) */}
         <div className="text-center mb-6 sm:mb-8">
