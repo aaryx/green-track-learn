@@ -193,4 +193,14 @@
       @apply active:scale-95;
     }
   }
+
+  /* Mobile responsiveness for Google Sheets embedded charts */
+  @media (max-width: 768px) {
+    .chart-embed iframe {
+      width: 100% !important;
+      height: 80vh !important;
+      transform: scale(1) !important;
+      transform-origin: top left !important;
+    }
+  }
 }

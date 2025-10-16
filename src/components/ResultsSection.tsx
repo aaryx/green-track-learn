@@ -40,7 +40,7 @@ const ResultsSection = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent className="p-0">
-                <div className="w-full overflow-hidden">
+                <div className="w-full overflow-hidden chart-embed">
                   <iframe
                     width="600"
                     height="371"

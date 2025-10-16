@@ -84,7 +84,7 @@ const AnalysisSection = () => {
                 </div>
               </div>
             </div>
-            <div className="bg-primary/10 p-2 sm:p-4 rounded-lg flex justify-center items-center">
+            <div className="bg-primary/10 p-2 sm:p-4 rounded-lg flex justify-center items-center chart-embed">
               <iframe 
                 width="600" 
                 height="371" 
@@ -140,7 +140,7 @@ const AnalysisSection = () => {
                 </div>
               </div>
             </div>
-            <div className="bg-primary/10 p-4 rounded-lg flex justify-center">
+            <div className="bg-primary/10 p-4 rounded-lg flex justify-center chart-embed">
               <iframe 
                 width="600" 
                 height="400" 
