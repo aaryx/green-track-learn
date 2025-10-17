@@ -194,20 +194,32 @@
     }
   }
 
-  /* Responsive iframes for embedded charts */
-  iframe {
+  /* Mobile responsiveness for embedded Google Sheets charts */
+  .chart-embed {
     width: 100%;
-    height: auto;
-    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 0.75rem;
+  }
+
+  .chart-embed iframe {
+    width: 100%;
     border: none;
   }
 
   @media (max-width: 768px) {
-    iframe {
-      width: 100%;
+    .chart-embed iframe {
+      width: 100% !important;
+      height: auto !important;
+      min-height: 280px !important;
+      max-height: 400px !important;
+    }
+  }
+
+  @media (min-width: 769px) {
+    .chart-embed iframe {
+      width: 600px;
       height: auto;
-      max-width: 100%;
-      aspect-ratio: 16 / 9;
+      min-height: 371px;
     }
   }
 }

@@ -84,16 +84,17 @@ const AnalysisSection = () => {
                 </div>
               </div>
             </div>
-            <div className="bg-primary/10 p-2 sm:p-4 rounded-lg flex justify-center items-center chart-embed">
-              <iframe 
-                width="600" 
-                height="371" 
-                seamless 
-                frameBorder="0" 
-                scrolling="no" 
-                src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRttnWCg0b1Gwq3L0zNxphphnwM5HmaBtHsee8JFcr7NnOE9u8rRLMf6gl_aEv8TvnltBvpkOClIl9C/pubchart?oid=820728412&amp;format=interactive"
-                className="w-full aspect-video sm:w-[600px] sm:h-[371px] sm:aspect-auto mx-auto"
-              ></iframe>
+            <div className="bg-primary/10 p-2 sm:p-4 rounded-lg flex justify-center items-center">
+              <div className="chart-embed">
+                <iframe 
+                  width="600" 
+                  height="371" 
+                  seamless 
+                  frameBorder="0" 
+                  scrolling="no" 
+                  src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRttnWCg0b1Gwq3L0zNxphphnwM5HmaBtHsee8JFcr7NnOE9u8rRLMf6gl_aEv8TvnltBvpkOClIl9C/pubchart?oid=820728412&amp;format=interactive"
+                ></iframe>
+              </div>
             </div>
           </CardContent>
         </Card>
@@ -140,16 +141,17 @@ const AnalysisSection = () => {
                 </div>
               </div>
             </div>
-            <div className="bg-primary/10 p-4 rounded-lg flex justify-center chart-embed">
-              <iframe 
-                width="600" 
-                height="400" 
-                seamless 
-                frameBorder="0" 
-                scrolling="no" 
-                src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRttnWCg0b1Gwq3L0zNxphphnwM5HmaBtHsee8JFcr7NnOE9u8rRLMf6gl_aEv8TvnltBvpkOClIl9C/pubchart?oid=757658263&amp;format=interactive"
-                className="w-full aspect-video sm:w-[600px] sm:h-[400px] sm:aspect-auto"
-              ></iframe>
+            <div className="bg-primary/10 p-4 rounded-lg flex justify-center">
+              <div className="chart-embed">
+                <iframe 
+                  width="600" 
+                  height="400" 
+                  seamless 
+                  frameBorder="0" 
+                  scrolling="no" 
+                  src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRttnWCg0b1Gwq3L0zNxphphnwM5HmaBtHsee8JFcr7NnOE9u8rRLMf6gl_aEv8TvnltBvpkOClIl9C/pubchart?oid=757658263&amp;format=interactive"
+                ></iframe>
+              </div>
             </div>
           </CardContent>
         </Card>

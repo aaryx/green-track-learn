@@ -40,7 +40,7 @@ const ResultsSection = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent className="p-0">
-                <div className="w-full overflow-hidden chart-embed">
+                <div className="chart-embed">
                   <iframe
                     width="600"
                     height="371"
@@ -49,7 +49,6 @@ const ResultsSection = () => {
                     scrolling="no"
                     src={chart.src}
                     title={chart.title}
-                    className="w-full aspect-video sm:w-[600px] sm:h-[371px] sm:aspect-auto"
                   />
                 </div>
               </CardContent>
