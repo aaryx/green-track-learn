@@ -199,36 +199,27 @@
     width: 100%;
     overflow: hidden;
     border-radius: 0.75rem;
-    position: relative;
   }
 
   .chart-embed iframe {
+    width: 100%;
     border: none;
   }
 
   @media (max-width: 768px) {
-    .chart-embed {
-      width: 100%;
-      height: 0;
-      padding-bottom: 75%; /* 4:3 aspect ratio for better chart visibility */
-      position: relative;
-    }
-    
     .chart-embed iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
       width: 100% !important;
-      height: 100% !important;
-      transform: scale(1);
-      transform-origin: 0 0;
+      height: auto !important;
+      min-height: 280px !important;
+      max-height: 400px !important;
     }
   }
 
   @media (min-width: 769px) {
     .chart-embed iframe {
       width: 600px;
-      height: 371px;
+      height: auto;
+      min-height: 371px;
     }
   }
 }
