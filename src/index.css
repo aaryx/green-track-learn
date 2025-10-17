@@ -198,9 +198,14 @@
   @media (max-width: 768px) {
     .chart-embed iframe {
       width: 100% !important;
-      height: 80vh !important;
-      transform: scale(1) !important;
-      transform-origin: top left !important;
+      height: auto !important;
+      min-height: 300px !important;
+      max-height: 500px !important;
+    }
+    
+    .chart-embed {
+      overflow: hidden;
+      border-radius: 0.75rem;
     }
   }
 }
