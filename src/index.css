@@ -194,18 +194,20 @@
     }
   }
 
-  /* Mobile responsiveness for Google Sheets embedded charts */
+  /* Responsive iframes for embedded charts */
+  iframe {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    border: none;
+  }
+
   @media (max-width: 768px) {
-    .chart-embed iframe {
-      width: 100% !important;
-      height: auto !important;
-      min-height: 300px !important;
-      max-height: 500px !important;
-    }
-    
-    .chart-embed {
-      overflow: hidden;
-      border-radius: 0.75rem;
+    iframe {
+      width: 100%;
+      height: auto;
+      max-width: 100%;
+      aspect-ratio: 16 / 9;
     }
   }
 }
