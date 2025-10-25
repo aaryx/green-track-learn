@@ -5,6 +5,7 @@ import SurveySection from "@/components/SurveySection";
 import ResultsSection from "@/components/ResultsSection";
 import EducationSection from "@/components/EducationSection";
 import AnalysisSection from "@/components/AnalysisSection";
+import PostersSection from "@/components/PostersSection";
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState("home");
@@ -48,6 +49,10 @@ const Index = () => {
         
         <section id="analysis">
           <AnalysisSection />
+        </section>
+        
+        <section id="posters">
+          <PostersSection />
         </section>
       </div>
     </div>

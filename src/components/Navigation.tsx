@@ -16,6 +16,7 @@ const Navigation = ({ activeSection, onSectionChange }: NavigationProps) => {
     { id: "results", label: "Results" },
     { id: "education", label: "Education" },
     { id: "analysis", label: "Analysis" },
+    { id: "posters", label: "Posters" },
   ];
 
   return (
