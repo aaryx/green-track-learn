@@ -1,12 +1,9 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import AgeDistributionChart from "./AgeDistributionChart";
+import FrequencyChart from "./FrequencyChart";
 
 const ResultsSection = () => {
   const otherCharts = [
-    {
-      title: "Frequency of waste collection",
-      src: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRttnWCg0b1Gwq3L0zNxphphnwM5HmaBtHsee8JFcr7NnOE9u8rRLMf6gl_aEv8TvnltBvpkOClIl9C/pubchart?oid=993278740&format=interactive"
-    },
     {
       title: "How Much Waste Generated",
       src: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRttnWCg0b1Gwq3L0zNxphphnwM5HmaBtHsee8JFcr7NnOE9u8rRLMf6gl_aEv8TvnltBvpkOClIl9C/pubchart?oid=133653367&format=interactive"
@@ -33,6 +30,13 @@ const ResultsSection = () => {
           <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" style={{ boxShadow: '0 4px 20px rgba(46, 125, 50, 0.15)' }}>
             <CardContent className="p-0 min-h-[400px] sm:min-h-[450px]">
               <AgeDistributionChart />
+            </CardContent>
+          </Card>
+
+          {/* Custom Frequency Chart */}
+          <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" style={{ boxShadow: '0 4px 20px rgba(46, 125, 50, 0.15)' }}>
+            <CardContent className="p-0 min-h-[400px] sm:min-h-[450px]">
+              <FrequencyChart />
             </CardContent>
           </Card>
 
