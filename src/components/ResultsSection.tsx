@@ -1,11 +1,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import AgeDistributionChart from "./AgeDistributionChart";
 
 const ResultsSection = () => {
-  const charts = [
-    {
-      title: "Age Data",
-      src: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRttnWCg0b1Gwq3L0zNxphphnwM5HmaBtHsee8JFcr7NnOE9u8rRLMf6gl_aEv8TvnltBvpkOClIl9C/pubchart?oid=1853520302&format=interactive"
-    },
+  const otherCharts = [
     {
       title: "Frequency of waste collection",
       src: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRttnWCg0b1Gwq3L0zNxphphnwM5HmaBtHsee8JFcr7NnOE9u8rRLMf6gl_aEv8TvnltBvpkOClIl9C/pubchart?oid=993278740&format=interactive"
@@ -32,7 +29,15 @@ const ResultsSection = () => {
 
         {/* Interactive Charts Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-12">
-          {charts.map((chart, index) => (
+          {/* Custom Age Distribution Chart */}
+          <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" style={{ boxShadow: '0 4px 20px rgba(46, 125, 50, 0.15)' }}>
+            <CardContent className="p-0 min-h-[400px] sm:min-h-[450px]">
+              <AgeDistributionChart />
+            </CardContent>
+          </Card>
+
+          {/* Other Google Charts */}
+          {otherCharts.map((chart, index) => (
             <Card key={index} className="overflow-hidden">
               <CardHeader className="pb-3 sm:pb-4 px-4 sm:px-6">
                 <CardTitle className="text-lg sm:text-xl font-semibold text-center">
