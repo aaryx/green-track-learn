@@ -1,97 +1,21 @@
-import { useEffect, useRef } from 'react';
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-
-ChartJS.register(ArcElement, Tooltip, Legend);
-
 const AgeDistributionChart = () => {
-  const chartRef = useRef<HTMLCanvasElement>(null);
-  const chartInstance = useRef<ChartJS | null>(null);
+  const data = [
+    { label: 'Below 18', value: 10, color: 'hsl(142, 76%, 36%)' },
+    { label: '18 - 30', value: 45, color: 'hsl(142, 70%, 45%)' },
+    { label: '31 - 45', value: 25, color: 'hsl(142, 60%, 55%)' },
+    { label: '46 - 60', value: 15, color: 'hsl(142, 50%, 65%)' },
+    { label: '50+', value: 3, color: 'hsl(142, 40%, 75%)' },
+    { label: 'Above 60', value: 2, color: 'hsl(142, 30%, 85%)' },
+  ];
 
-  useEffect(() => {
-    if (!chartRef.current) return;
-
-    const ctx = chartRef.current.getContext('2d');
-    if (!ctx) return;
-
-    // Destroy previous chart instance if it exists
-    if (chartInstance.current) {
-      chartInstance.current.destroy();
-    }
-
-    const data = {
-      labels: ['Below 18', '18 - 30', '31 - 45', '46 - 60', '50+', 'Above 60'],
-      datasets: [
-        {
-          data: [10, 45, 25, 15, 3, 2],
-          backgroundColor: [
-            'hsl(142, 76%, 36%)',  // primary green
-            'hsl(142, 70%, 45%)',  // lighter green
-            'hsl(142, 60%, 55%)',  // even lighter
-            'hsl(142, 50%, 65%)',  // pale green
-            'hsl(142, 40%, 75%)',  // very pale
-            'hsl(142, 30%, 85%)',  // almost white green
-          ],
-          borderColor: 'hsl(0, 0%, 100%)',
-          borderWidth: 3,
-          hoverOffset: 15,
-          hoverBorderWidth: 4,
-        },
-      ],
-    };
-
-    const config = {
-      type: 'pie' as const,
-      data: data,
-      options: {
-        responsive: true,
-        maintainAspectRatio: true,
-        aspectRatio: 1.5,
-        plugins: {
-          legend: {
-            position: 'bottom' as const,
-            labels: {
-              padding: 15,
-              font: {
-                size: 13,
-                family: "'Inter', sans-serif",
-              },
-              color: 'hsl(240, 10%, 3.9%)',
-              usePointStyle: true,
-              pointStyle: 'circle',
-            },
-          },
-          tooltip: {
-            backgroundColor: 'hsl(142, 76%, 36%)',
-            titleColor: 'hsl(0, 0%, 100%)',
-            bodyColor: 'hsl(0, 0%, 100%)',
-            padding: 12,
-            cornerRadius: 8,
-            displayColors: true,
-            callbacks: {
-              label: function(context: any) {
-                const label = context.label || '';
-                const value = context.parsed || 0;
-                return `${label}: ${value}%`;
-              },
-            },
-          },
-        },
-        animation: {
-          animateRotate: true,
-          animateScale: true,
-          duration: 1000,
-        },
-      },
-    };
-
-    chartInstance.current = new ChartJS(ctx, config);
-
-    return () => {
-      if (chartInstance.current) {
-        chartInstance.current.destroy();
-      }
-    };
-  }, []);
+  // Calculate conic gradient stops
+  let currentAngle = 0;
+  const gradientStops = data.map((item) => {
+    const startAngle = currentAngle;
+    const endAngle = currentAngle + (item.value / 100) * 360;
+    currentAngle = endAngle;
+    return `${item.color} ${startAngle}deg ${endAngle}deg`;
+  }).join(', ');
 
   return (
     <div className="w-full h-full flex flex-col items-center justify-center p-4 sm:p-6">
@@ -101,8 +25,33 @@ const AgeDistributionChart = () => {
       <p className="text-xs sm:text-sm text-muted-foreground mb-4 sm:mb-6 text-center">
         Data collected from community survey (n=300)
       </p>
-      <div className="w-full max-w-[400px] mx-auto">
-        <canvas ref={chartRef} />
+      
+      <div className="w-full max-w-[350px] mx-auto">
+        {/* Pie Chart */}
+        <div className="relative mx-auto w-64 h-64 sm:w-72 sm:h-72 mb-6">
+          <div
+            className="w-full h-full rounded-full shadow-lg transition-transform duration-300 hover:scale-105"
+            style={{
+              background: `conic-gradient(${gradientStops})`,
+              boxShadow: '0 4px 20px rgba(46, 125, 50, 0.2)'
+            }}
+          />
+        </div>
+
+        {/* Legend */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {data.map((item, index) => (
+            <div key={index} className="flex items-center gap-2">
+              <div
+                className="w-4 h-4 rounded-full flex-shrink-0"
+                style={{ backgroundColor: item.color }}
+              />
+              <span className="text-sm text-foreground">
+                {item.label}: <span className="font-semibold">{item.value}%</span>
+              </span>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
