@@ -2,14 +2,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import AgeDistributionChart from "./AgeDistributionChart";
 import FrequencyChart from "./FrequencyChart";
 import WasteGenerationChart from "./WasteGenerationChart";
+import WasteDisposalChart from "./WasteDisposalChart";
 
 const ResultsSection = () => {
-  const otherCharts = [
-    {
-      title: "How Waste is Usually Disposed",
-      src: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRttnWCg0b1Gwq3L0zNxphphnwM5HmaBtHsee8JFcr7NnOE9u8rRLMf6gl_aEv8TvnltBvpkOClIl9C/pubchart?oid=552455884&format=interactive"
-    }
-  ];
+  const otherCharts: any[] = [];
 
   return (
     <section className="py-8 sm:py-12 md:py-16 bg-secondary/20">
@@ -41,6 +37,13 @@ const ResultsSection = () => {
           <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" style={{ boxShadow: '0 4px 20px rgba(46, 125, 50, 0.15)' }}>
             <CardContent className="p-0 min-h-[400px] sm:min-h-[450px]">
               <WasteGenerationChart />
+            </CardContent>
+          </Card>
+
+          {/* Custom Waste Disposal Chart */}
+          <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" style={{ boxShadow: '0 4px 20px rgba(46, 125, 50, 0.15)' }}>
+            <CardContent className="p-0 min-h-[400px] sm:min-h-[450px]">
+              <WasteDisposalChart />
             </CardContent>
           </Card>
 
