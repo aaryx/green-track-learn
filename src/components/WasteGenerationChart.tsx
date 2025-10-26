@@ -2,10 +2,10 @@ import { useState } from 'react';
 
 const WasteGenerationChart = () => {
   const data = [
-    { label: '<5kg', value: 26.7, color: 'hsl(142, 76%, 36%)' },
-    { label: '5-10kg', value: 19.2, color: 'hsl(142, 70%, 45%)' },
-    { label: '10-20kg', value: 32.7, color: 'hsl(142, 60%, 55%)' },
-    { label: '20kg+', value: 21.4, color: 'hsl(142, 50%, 65%)' },
+    { label: '<5kg', value: 26.7, color: '#4CAF50' },
+    { label: '5-10kg', value: 19.2, color: '#2196F3' },
+    { label: '10-20kg', value: 32.7, color: '#FF9800' },
+    { label: '20kg+', value: 21.4, color: '#E91E63' },
   ];
 
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -22,7 +22,7 @@ const WasteGenerationChart = () => {
       
       <div className="w-full max-w-[600px] mx-auto">
         {/* Chart Container */}
-        <div className="relative h-[280px] sm:h-[320px] flex items-end justify-center gap-3 sm:gap-6 md:gap-8 px-4 sm:px-6 pb-16">
+        <div className="relative h-[320px] sm:h-[350px] flex items-end justify-around gap-4 sm:gap-6 md:gap-8 px-4 sm:px-6 pb-16 bg-card rounded-xl shadow-sm">
           {/* Bars */}
           {data.map((item, index) => {
             const heightPercent = (item.value / maxValue) * 100;
@@ -31,52 +31,44 @@ const WasteGenerationChart = () => {
             return (
               <div
                 key={index}
-                className="flex-1 max-w-[100px] flex flex-col items-center group relative"
+                className="flex-1 max-w-[80px] flex flex-col items-center group relative"
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
               >
-                {/* Tooltip */}
-                {isHovered && (
-                  <div className="absolute -top-14 left-1/2 -translate-x-1/2 bg-card border border-border rounded-lg px-3 py-2 shadow-lg z-10 whitespace-nowrap animate-fade-in">
-                    <p className="text-xs font-semibold text-foreground">{item.label}</p>
-                    <p className="text-xs text-muted-foreground">{item.value}%</p>
-                  </div>
-                )}
-
                 {/* Rectangular Bar */}
                 <div
-                  className="w-full rounded-t-md transition-all duration-300"
+                  className="w-full rounded-t-lg transition-all duration-300 flex items-end justify-center pb-2 relative overflow-hidden"
                   style={{
-                    height: `${heightPercent}%`,
+                    height: `${heightPercent * 3}px`,
+                    minHeight: '60px',
+                    maxHeight: '300px',
                     backgroundColor: item.color,
-                    transform: isHovered ? 'scale(1.08)' : 'scale(1)',
+                    transform: isHovered ? 'scale(1.05)' : 'scale(1)',
+                    filter: isHovered ? 'brightness(1.1)' : 'brightness(1)',
                     boxShadow: isHovered 
-                      ? `0 -4px 20px ${item.color.replace(')', ', 0.6)')}, 0 0 0 3px ${item.color.replace(')', ', 0.5)')}, 0 8px 16px rgba(0,0,0,0.1)`
-                      : `0 -2px 8px ${item.color.replace(')', ', 0.3)')}`,
+                      ? `0 4px 20px rgba(0, 0, 0, 0.15)`
+                      : `0 2px 8px rgba(0, 0, 0, 0.1)`,
                     animation: `bar-rise 0.8s ease-out ${index * 0.1}s both`,
                   }}
-                />
+                >
+                  {/* Percentage inside bar */}
+                  <span 
+                    className="text-xs sm:text-sm font-semibold text-white transition-opacity duration-300"
+                    style={{
+                      opacity: isHovered ? 1 : 0,
+                    }}
+                  >
+                    {item.value}%
+                  </span>
+                </div>
 
                 {/* Label */}
-                <p className="text-xs sm:text-sm font-semibold text-foreground mt-3 text-center">
+                <p className="text-xs sm:text-sm font-medium text-foreground mt-3 text-center">
                   {item.label}
                 </p>
               </div>
             );
           })}
-        </div>
-
-        {/* Value Legend */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6">
-          {data.map((item, index) => (
-            <div key={index} className="text-center">
-              <div
-                className="w-4 h-4 rounded mx-auto mb-1"
-                style={{ backgroundColor: item.color }}
-              />
-              <p className="text-xs text-muted-foreground">{item.value}%</p>
-            </div>
-          ))}
         </div>
       </div>
 
