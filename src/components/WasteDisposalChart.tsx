@@ -20,7 +20,7 @@ const WasteDisposalChart = () => {
       
       <div className="w-full max-w-[700px] mx-auto">
         {/* Chart Container */}
-        <div className="relative h-[300px] sm:h-[320px] flex items-end justify-around gap-2 sm:gap-4 px-4 sm:px-6 pb-4 bg-card rounded-2xl shadow-sm">
+        <div className="relative h-[280px] sm:h-[320px] flex flex-wrap sm:flex-nowrap items-end justify-around gap-1 sm:gap-3 md:gap-4 px-2 sm:px-4 md:px-6 pb-4 bg-card rounded-2xl shadow-sm overflow-x-auto">
           {/* Bars */}
           {data.map((item, index) => {
             const isHovered = hoveredIndex === index;
@@ -28,20 +28,20 @@ const WasteDisposalChart = () => {
             return (
               <div
                 key={index}
-                className="flex flex-col items-center"
+                className="flex flex-col items-center flex-shrink-0"
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
               >
                 {/* Percentage Label Above */}
-                <div className="mb-2 text-xs sm:text-sm font-bold text-foreground">
+                <div className="mb-1 text-[10px] sm:text-xs md:text-sm font-bold text-foreground">
                   {item.percent}%
                 </div>
 
                 {/* Bar */}
                 <div
-                  className="w-[30px] sm:w-[40px] rounded-t-lg transition-all duration-300"
+                  className="w-[24px] sm:w-[35px] md:w-[40px] rounded-t-lg transition-all duration-300"
                   style={{
-                    height: `${item.percent * 2.5}px`,
+                    height: `${item.percent * 2.2}px`,
                     minHeight: '20px',
                     background: item.color,
                     transform: isHovered ? 'scale(1.1)' : 'scale(1)',
@@ -51,7 +51,7 @@ const WasteDisposalChart = () => {
                 />
 
                 {/* Label Below */}
-                <div className="text-[10px] sm:text-xs font-medium text-muted-foreground mt-2 text-center max-w-[70px] break-words">
+                <div className="text-[8px] sm:text-[10px] md:text-xs font-medium text-muted-foreground mt-1 sm:mt-2 text-center max-w-[50px] sm:max-w-[70px] break-words leading-tight">
                   {item.method}
                 </div>
               </div>
