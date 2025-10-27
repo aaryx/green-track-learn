@@ -1,5 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Users, TrendingUp, Trash2, AlertTriangle, ShieldCheck, Lightbulb, CheckCircle, Home, School, Building2, FlaskConical, Stethoscope, Store, Trees } from "lucide-react";
+import WasteTypeChart from "@/components/WasteTypeChart";
 
 const AnalysisSection = () => {
   return (
@@ -84,17 +85,8 @@ const AnalysisSection = () => {
                 </div>
               </div>
             </div>
-            <div className="bg-primary/10 p-2 sm:p-4 rounded-lg flex justify-center items-center">
-              <div className="chart-embed">
-                <iframe 
-                  width="600" 
-                  height="371" 
-                  seamless 
-                  frameBorder="0" 
-                  scrolling="no" 
-                  src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRttnWCg0b1Gwq3L0zNxphphnwM5HmaBtHsee8JFcr7NnOE9u8rRLMf6gl_aEv8TvnltBvpkOClIl9C/pubchart?oid=820728412&amp;format=interactive"
-                ></iframe>
-              </div>
+            <div className="flex justify-center items-center py-4 sm:py-6">
+              <WasteTypeChart />
             </div>
           </CardContent>
         </Card>
