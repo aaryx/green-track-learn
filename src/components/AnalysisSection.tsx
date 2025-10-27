@@ -133,17 +133,8 @@ const AnalysisSection = () => {
                 </div>
               </div>
             </div>
-            <div className="bg-primary/10 p-4 rounded-lg flex justify-center">
-              <div className="chart-embed">
-                <iframe 
-                  width="600" 
-                  height="400" 
-                  seamless 
-                  frameBorder="0" 
-                  scrolling="no" 
-                  src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRttnWCg0b1Gwq3L0zNxphphnwM5HmaBtHsee8JFcr7NnOE9u8rRLMf6gl_aEv8TvnltBvpkOClIl9C/pubchart?oid=757658263&amp;format=interactive"
-                ></iframe>
-              </div>
+            <div className="flex justify-center items-center py-4 sm:py-6">
+              <WasteTypeChart />
             </div>
           </CardContent>
         </Card>
