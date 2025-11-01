@@ -71,9 +71,7 @@ const WasteGenerationChart = () => {
   };
   return <div className="w-full h-full flex flex-col items-center justify-center p-4 sm:p-6">
       
-      <p className="text-xs sm:text-sm text-muted-foreground mb-6 sm:mb-8 text-center">
-        Survey responses (n=162)
-      </p>
+      
       
       <div className="w-full max-w-[900px] mx-auto">
         <div className="bg-card rounded-xl shadow-sm p-4 sm:p-6">
