@@ -1,6 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Users, TrendingUp, Trash2, AlertTriangle, ShieldCheck, Lightbulb, CheckCircle, Home, School, Building2, FlaskConical, Stethoscope, Store, Trees } from "lucide-react";
 import PlaceTypeChart from "@/components/PlaceTypeChart";
+import WasteTypeChart from "@/components/WasteTypeChart";
 
 const AnalysisSection = () => {
   return (
@@ -134,7 +135,7 @@ const AnalysisSection = () => {
               </div>
             </div>
             <div className="flex justify-center items-center py-4 sm:py-6">
-              <PlaceTypeChart />
+              <WasteTypeChart />
             </div>
           </CardContent>
         </Card>
