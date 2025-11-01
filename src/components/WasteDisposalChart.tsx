@@ -84,7 +84,7 @@ const WasteDisposalChart = () => {
       
       <div className="w-full max-w-[700px] mx-auto flex justify-center">
         <div className="bg-card rounded-2xl shadow-sm p-4 sm:p-6 w-full">
-          <div className="h-[300px] sm:h-[400px] md:h-[450px] mx-auto">
+          <div className="h-[300px] sm:h-[400px] md:h-[450px] mx-auto flex items-center justify-center">
             <Bar data={data} options={options} />
           </div>
         </div>
