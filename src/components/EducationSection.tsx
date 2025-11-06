@@ -1,20 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { 
-  BookOpen, 
-  Play, 
-  ChevronRight, 
-  Clock, 
-  CheckCircle, 
-  Leaf,
-  Recycle,
-  Smartphone,
-  Users,
-  X,
-  Brain
-} from "lucide-react";
-
+import { BookOpen, Play, ChevronRight, Clock, CheckCircle, Leaf, Recycle, Smartphone, Users, X, Brain } from "lucide-react";
 const EducationSection = () => {
   const [activeTab, setActiveTab] = useState<"articles" | "videos">("articles");
   const [selectedArticle, setSelectedArticle] = useState<number | null>(null);
@@ -23,16 +10,14 @@ const EducationSection = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [userAnswers, setUserAnswers] = useState<number[]>([]);
   const [quizComplete, setQuizComplete] = useState(false);
-
-  const articles = [
-    {
-      id: 1,
-      title: "Composting at Home",
-      category: "Composting",
-      description: "Transform your kitchen scraps into nutrient-rich compost with this comprehensive step-by-step guide.",
-      readTime: "8 min read",
-      image: "/api/placeholder/400/200",
-      content: `
+  const articles = [{
+    id: 1,
+    title: "Composting at Home",
+    category: "Composting",
+    description: "Transform your kitchen scraps into nutrient-rich compost with this comprehensive step-by-step guide.",
+    readTime: "8 min read",
+    image: "/api/placeholder/400/200",
+    content: `
         <h3>Getting Started with Home Composting</h3>
         <p>Composting is one of the most effective ways to reduce household waste while creating valuable fertilizer for your garden. Here's everything you need to know to start composting at home.</p>
         
@@ -56,17 +41,16 @@ const EducationSection = () => {
         <h4>Common Mistakes to Avoid:</h4>
         <p>Don't add meat, dairy, or oily foods. Avoid pet waste and diseased plants. Keep the pile balanced and aerated.</p>
       `,
-      iconColor: "text-accent-green",
-      bgColor: "bg-accent-green/10"
-    },
-    {
-      id: 2,
-      title: "Plastic Reduction Tips",
-      category: "Plastic Reduction",
-      description: "Discover practical alternatives to single-use plastics and learn effective recycling strategies.",
-      readTime: "6 min read",
-      image: "/api/placeholder/400/200",
-      content: `
+    iconColor: "text-accent-green",
+    bgColor: "bg-accent-green/10"
+  }, {
+    id: 2,
+    title: "Plastic Reduction Tips",
+    category: "Plastic Reduction",
+    description: "Discover practical alternatives to single-use plastics and learn effective recycling strategies.",
+    readTime: "6 min read",
+    image: "/api/placeholder/400/200",
+    content: `
         <h3>Reducing Plastic in Daily Life</h3>
         <p>Small changes in our daily habits can significantly reduce plastic consumption and environmental impact.</p>
         
@@ -86,17 +70,16 @@ const EducationSection = () => {
           <li>Find specialized recycling programs for items like electronics</li>
         </ol>
       `,
-      iconColor: "text-accent-blue",
-      bgColor: "bg-accent-blue/10"
-    },
-    {
-      id: 3,
-      title: "E-waste Management",
-      category: "E-waste",
-      description: "Learn about proper disposal of electronic devices and find local recycling centers.",
-      readTime: "5 min read",
-      image: "/api/placeholder/400/200",
-      content: `
+    iconColor: "text-accent-blue",
+    bgColor: "bg-accent-blue/10"
+  }, {
+    id: 3,
+    title: "E-waste Management",
+    category: "E-waste",
+    description: "Learn about proper disposal of electronic devices and find local recycling centers.",
+    readTime: "5 min read",
+    image: "/api/placeholder/400/200",
+    content: `
         <h3>Responsible E-waste Disposal</h3>
         <p>Electronic waste contains valuable materials that can be recovered, but also hazardous substances that require proper handling.</p>
         
@@ -116,17 +99,16 @@ const EducationSection = () => {
           <li><strong>Certified Recyclers:</strong> Find e-Stewards or R2 certified facilities</li>
         </ol>
       `,
-      iconColor: "text-accent-purple",
-      bgColor: "bg-accent-purple/10"
-    },
-    {
-      id: 4,
-      title: "Community Awareness Campaigns",
-      category: "Awareness",
-      description: "Organize effective local clean-ups and educational workshops in your neighborhood.",
-      readTime: "10 min read",
-      image: "/api/placeholder/400/200",
-      content: `
+    iconColor: "text-accent-purple",
+    bgColor: "bg-accent-purple/10"
+  }, {
+    id: 4,
+    title: "Community Awareness Campaigns",
+    category: "Awareness",
+    description: "Organize effective local clean-ups and educational workshops in your neighborhood.",
+    readTime: "10 min read",
+    image: "/api/placeholder/400/200",
+    content: `
         <h3>Building Community Engagement</h3>
         <p>Successful environmental campaigns start with community involvement and clear communication.</p>
         
@@ -146,148 +128,121 @@ const EducationSection = () => {
           <li><strong>Social Media Campaigns:</strong> Share tips and success stories online</li>
         </ol>
       `,
-      iconColor: "text-accent-orange",
-      bgColor: "bg-accent-orange/10"
-    }
-  ];
-
-  const videos = [
-    {
-      id: 1,
-      title: "Waste Segregation 101",
-      description: "Learn the basics of proper waste segregation and why it matters for our environment.",
-      duration: "12:30",
-      embedId: "W5rR4T7p2sQ",
-      category: "Basics"
-    },
-    {
-      id: 2,
-      title: "Composting Basics",
-      description: "A complete guide to setting up and maintaining your home composting system.",
-      duration: "18:45",
-      embedId: "bMq_hfhXnBc",
-      category: "Composting"
-    },
-    {
-      id: 3,
-      title: "E-waste Disposal Tips",
-      description: "Discover the right way to dispose of electronic devices and where to take them.",
-      duration: "11:41",
-      embedId: "e-YTAYcZrbE",
-      category: "E-waste"
-    },
-    {
-      id: 4,
-      title: "Plastic Reduction Challenge",
-      description: "30-day challenge to reduce single-use plastics in your daily life.",
-      duration: "15:20",
-      embedId: "kHxplaKKVMw",
-      category: "Plastic Reduction"
-    }
-  ];
-
+    iconColor: "text-accent-orange",
+    bgColor: "bg-accent-orange/10"
+  }];
+  const videos = [{
+    id: 1,
+    title: "Waste Segregation 101",
+    description: "Learn the basics of proper waste segregation and why it matters for our environment.",
+    duration: "12:30",
+    embedId: "W5rR4T7p2sQ",
+    category: "Basics"
+  }, {
+    id: 2,
+    title: "Composting Basics",
+    description: "A complete guide to setting up and maintaining your home composting system.",
+    duration: "18:45",
+    embedId: "bMq_hfhXnBc",
+    category: "Composting"
+  }, {
+    id: 3,
+    title: "E-waste Disposal Tips",
+    description: "Discover the right way to dispose of electronic devices and where to take them.",
+    duration: "11:41",
+    embedId: "e-YTAYcZrbE",
+    category: "E-waste"
+  }, {
+    id: 4,
+    title: "Plastic Reduction Challenge",
+    description: "30-day challenge to reduce single-use plastics in your daily life.",
+    duration: "15:20",
+    embedId: "kHxplaKKVMw",
+    category: "Plastic Reduction"
+  }];
   const toggleVideoComplete = (videoId: number) => {
-    setCompletedVideos(prev => 
-      prev.includes(videoId) 
-        ? prev.filter(id => id !== videoId)
-        : [...prev, videoId]
-    );
+    setCompletedVideos(prev => prev.includes(videoId) ? prev.filter(id => id !== videoId) : [...prev, videoId]);
   };
-
   const getCategoryIcon = (category: string) => {
     switch (category) {
-      case "Composting": return Leaf;
-      case "Plastic Reduction": return Recycle;
-      case "E-waste": return Smartphone;
-      case "Awareness": return Users;
-      default: return BookOpen;
+      case "Composting":
+        return Leaf;
+      case "Plastic Reduction":
+        return Recycle;
+      case "E-waste":
+        return Smartphone;
+      case "Awareness":
+        return Users;
+      default:
+        return BookOpen;
     }
   };
-
-  const quizQuestions = [
-    {
-      question: "Which bin should you put vegetable peels in?",
-      options: ["Blue bin", "Green bin", "Red bin", "Yellow bin"],
-      correct: 1
-    },
-    {
-      question: "Which of these is non-biodegradable waste?",
-      options: ["Paper", "Plastic bottle", "Food waste", "Cotton cloth"],
-      correct: 1
-    },
-    {
-      question: "What does the ♻️ recycling symbol mean?",
-      options: ["Product is expensive", "Product can be reused", "Product is biodegradable", "Product is organic"],
-      correct: 1
-    },
-    {
-      question: "Which of these items is e-waste?",
-      options: ["Broken glass", "Mobile phone", "Banana peel", "Old newspaper"],
-      correct: 1
-    },
-    {
-      question: "Which is the best method to handle kitchen waste?",
-      options: ["Composting", "Burning", "Throwing in dustbin", "Dumping in river"],
-      correct: 0
-    },
-    {
-      question: "Which gas is mainly produced in landfills?",
-      options: ["Oxygen", "Methane", "Carbon dioxide", "Nitrogen"],
-      correct: 1
-    },
-    {
-      question: "Which of these is hazardous waste?",
-      options: ["Plastic bag", "Paint can", "Cardboard box", "Fruit peel"],
-      correct: 1
-    },
-    {
-      question: "What is the first step in waste management?",
-      options: ["Dumping", "Segregation", "Recycling", "Composting"],
-      correct: 1
-    },
-    {
-      question: "Which waste goes in the blue bin (India guidelines)?",
-      options: ["Plastic bottles", "Food waste", "Medical waste", "Garden leaves"],
-      correct: 0
-    },
-    {
-      question: "Which of these is a single-use plastic?",
-      options: ["Cloth bag", "Plastic straw", "Metal spoon", "Steel bottle"],
-      correct: 1
-    },
-    {
-      question: "Which is the correct 3R principle order?",
-      options: ["Recycle → Reduce → Reuse", "Reduce → Reuse → Recycle", "Reuse → Recycle → Reduce", "Reduce → Recycle → Reuse"],
-      correct: 1
-    },
-    {
-      question: "Which of these wastes is biodegradable?",
-      options: ["Banana peel", "Plastic wrapper", "Glass bottle", "Aluminum foil"],
-      correct: 0
-    },
-    {
-      question: "What should you do with expired medicines?",
-      options: ["Throw in normal bin", "Give to pharmacy/hospital", "Compost them", "Flush in toilet"],
-      correct: 1
-    },
-    {
-      question: "Which of these practices helps reduce plastic waste?",
-      options: ["Using cloth bags", "Buying bottled water daily", "Burning plastics", "Throwing plastics in landfill"],
-      correct: 0
-    },
-    {
-      question: "Compost is rich in which nutrient?",
-      options: ["Nitrogen", "Iron", "Copper", "Silver"],
-      correct: 0
-    }
-  ];
-
+  const quizQuestions = [{
+    question: "Which bin should you put vegetable peels in?",
+    options: ["Blue bin", "Green bin", "Red bin", "Yellow bin"],
+    correct: 1
+  }, {
+    question: "Which of these is non-biodegradable waste?",
+    options: ["Paper", "Plastic bottle", "Food waste", "Cotton cloth"],
+    correct: 1
+  }, {
+    question: "What does the ♻️ recycling symbol mean?",
+    options: ["Product is expensive", "Product can be reused", "Product is biodegradable", "Product is organic"],
+    correct: 1
+  }, {
+    question: "Which of these items is e-waste?",
+    options: ["Broken glass", "Mobile phone", "Banana peel", "Old newspaper"],
+    correct: 1
+  }, {
+    question: "Which is the best method to handle kitchen waste?",
+    options: ["Composting", "Burning", "Throwing in dustbin", "Dumping in river"],
+    correct: 0
+  }, {
+    question: "Which gas is mainly produced in landfills?",
+    options: ["Oxygen", "Methane", "Carbon dioxide", "Nitrogen"],
+    correct: 1
+  }, {
+    question: "Which of these is hazardous waste?",
+    options: ["Plastic bag", "Paint can", "Cardboard box", "Fruit peel"],
+    correct: 1
+  }, {
+    question: "What is the first step in waste management?",
+    options: ["Dumping", "Segregation", "Recycling", "Composting"],
+    correct: 1
+  }, {
+    question: "Which waste goes in the blue bin (India guidelines)?",
+    options: ["Plastic bottles", "Food waste", "Medical waste", "Garden leaves"],
+    correct: 0
+  }, {
+    question: "Which of these is a single-use plastic?",
+    options: ["Cloth bag", "Plastic straw", "Metal spoon", "Steel bottle"],
+    correct: 1
+  }, {
+    question: "Which is the correct 3R principle order?",
+    options: ["Recycle → Reduce → Reuse", "Reduce → Reuse → Recycle", "Reuse → Recycle → Reduce", "Reduce → Recycle → Reuse"],
+    correct: 1
+  }, {
+    question: "Which of these wastes is biodegradable?",
+    options: ["Banana peel", "Plastic wrapper", "Glass bottle", "Aluminum foil"],
+    correct: 0
+  }, {
+    question: "What should you do with expired medicines?",
+    options: ["Throw in normal bin", "Give to pharmacy/hospital", "Compost them", "Flush in toilet"],
+    correct: 1
+  }, {
+    question: "Which of these practices helps reduce plastic waste?",
+    options: ["Using cloth bags", "Buying bottled water daily", "Burning plastics", "Throwing plastics in landfill"],
+    correct: 0
+  }, {
+    question: "Compost is rich in which nutrient?",
+    options: ["Nitrogen", "Iron", "Copper", "Silver"],
+    correct: 0
+  }];
   const handleQuizAnswer = (answerIndex: number) => {
     const newAnswers = [...userAnswers];
     newAnswers[currentQuestion] = answerIndex;
     setUserAnswers(newAnswers);
   };
-
   const handleNextQuestion = () => {
     if (currentQuestion < quizQuestions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
@@ -295,32 +250,36 @@ const EducationSection = () => {
       setQuizComplete(true);
     }
   };
-
   const calculateScore = () => {
     return userAnswers.reduce((score, answer, index) => {
       return score + (answer === quizQuestions[index].correct ? 1 : 0);
     }, 0);
   };
-
   const getResultMessage = (score: number) => {
     if (score >= 12) {
-      return { emoji: "🎉", message: "Excellent! You have great knowledge about Waste Management!" };
+      return {
+        emoji: "🎉",
+        message: "Excellent! You have great knowledge about Waste Management!"
+      };
     } else if (score >= 5) {
-      return { emoji: "✨", message: "Good effort! Keep learning and you'll become a waste warrior." };
+      return {
+        emoji: "✨",
+        message: "Good effort! Keep learning and you'll become a waste warrior."
+      };
     } else {
-      return { emoji: "📘", message: "Don't worry! Keep practicing to improve your knowledge." };
+      return {
+        emoji: "📘",
+        message: "Don't worry! Keep practicing to improve your knowledge."
+      };
     }
   };
-
   const resetQuiz = () => {
     setCurrentQuestion(0);
     setUserAnswers([]);
     setQuizComplete(false);
     setShowQuiz(false);
   };
-
-  return (
-    <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-background to-secondary/20">
+  return <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-background to-secondary/20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-10 md:space-y-12">
         {/* Header */}
         <div className="text-center space-y-3 sm:space-y-4 animate-fade-in">
@@ -342,27 +301,11 @@ const EducationSection = () => {
         <div className="flex justify-center animate-slide-up px-4">
           <div className="bg-white rounded-2xl p-1.5 sm:p-2 shadow-[var(--shadow-soft)] border border-border/50 w-full sm:w-auto">
             <div className="flex gap-1 sm:gap-2">
-              <Button
-                onClick={() => setActiveTab("articles")}
-                variant={activeTab === "articles" ? "default" : "ghost"}
-                className={`flex-1 sm:flex-none px-4 sm:px-6 py-2 rounded-xl transition-all duration-300 text-sm sm:text-base ${
-                  activeTab === "articles" 
-                    ? "bg-primary text-primary-foreground shadow-md" 
-                    : "hover:bg-primary/5"
-                }`}
-              >
+              <Button onClick={() => setActiveTab("articles")} variant={activeTab === "articles" ? "default" : "ghost"} className={`flex-1 sm:flex-none px-4 sm:px-6 py-2 rounded-xl transition-all duration-300 text-sm sm:text-base ${activeTab === "articles" ? "bg-primary text-primary-foreground shadow-md" : "hover:bg-primary/5"}`}>
                 <BookOpen className="h-3 w-3 sm:h-4 sm:w-4 sm:mr-2" />
                 <span className="hidden sm:inline">Articles</span>
               </Button>
-              <Button
-                onClick={() => setActiveTab("videos")}
-                variant={activeTab === "videos" ? "default" : "ghost"}
-                className={`flex-1 sm:flex-none px-4 sm:px-6 py-2 rounded-xl transition-all duration-300 text-sm sm:text-base ${
-                  activeTab === "videos" 
-                    ? "bg-primary text-primary-foreground shadow-md" 
-                    : "hover:bg-primary/5"
-                }`}
-              >
+              <Button onClick={() => setActiveTab("videos")} variant={activeTab === "videos" ? "default" : "ghost"} className={`flex-1 sm:flex-none px-4 sm:px-6 py-2 rounded-xl transition-all duration-300 text-sm sm:text-base ${activeTab === "videos" ? "bg-primary text-primary-foreground shadow-md" : "hover:bg-primary/5"}`}>
                 <Play className="h-3 w-3 sm:h-4 sm:w-4 sm:mr-2" />
                 <span className="hidden sm:inline">Video Courses</span>
               </Button>
@@ -371,16 +314,11 @@ const EducationSection = () => {
         </div>
 
         {/* Articles Section */}
-        {activeTab === "articles" && (
-          <div className="space-y-8 animate-fade-in">
-            {selectedArticle ? (
-              // Article Detail View
-              <div className="card-eco space-y-6">
-                <Button
-                  onClick={() => setSelectedArticle(null)}
-                  variant="ghost"
-                  className="mb-4"
-                >
+        {activeTab === "articles" && <div className="space-y-8 animate-fade-in">
+            {selectedArticle ?
+        // Article Detail View
+        <div className="card-eco space-y-6">
+                <Button onClick={() => setSelectedArticle(null)} variant="ghost" className="mb-4">
                   ← Back to Articles
                 </Button>
                 
@@ -399,37 +337,28 @@ const EducationSection = () => {
                     </h1>
                   </div>
                   
-                  <div 
-                    className="prose prose-lg max-w-none"
-                    dangerouslySetInnerHTML={{ 
-                      __html: articles.find(a => a.id === selectedArticle)?.content || "" 
-                    }}
-                  />
+                  <div className="prose prose-lg max-w-none" dangerouslySetInnerHTML={{
+              __html: articles.find(a => a.id === selectedArticle)?.content || ""
+            }} />
                 </div>
-              </div>
-            ) : (
-              // Articles Grid
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-                {articles.map((article) => {
-                  const IconComponent = getCategoryIcon(article.category);
-                  return (
-                    <div
-                      key={article.id}
-                      className="card-eco hover-lift cursor-pointer group"
-                      onClick={() => {
-                        if (article.id === 1) {
-                          window.open('https://www.epa.gov/recycle/composting-home', '_blank');
-                        } else if (article.id === 2) {
-                          window.open('https://www.wwf.org.uk/updates/top-tips-reduce-your-plastic-footprint', '_blank');
-                        } else if (article.id === 3) {
-                          window.open('https://www.teriin.org/article/e-waste-management-india-challenges-and-opportunities', '_blank');
-                        } else if (article.id === 4) {
-                          window.open('https://tontoton.com/how-to-raise-waste-management-awareness/', '_blank');
-                        } else {
-                          setSelectedArticle(article.id);
-                        }
-                      }}
-                    >
+              </div> :
+        // Articles Grid
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+                {articles.map(article => {
+            const IconComponent = getCategoryIcon(article.category);
+            return <div key={article.id} className="card-eco hover-lift cursor-pointer group" onClick={() => {
+              if (article.id === 1) {
+                window.open('https://www.epa.gov/recycle/composting-home', '_blank');
+              } else if (article.id === 2) {
+                window.open('https://www.wwf.org.uk/updates/top-tips-reduce-your-plastic-footprint', '_blank');
+              } else if (article.id === 3) {
+                window.open('https://www.teriin.org/article/e-waste-management-india-challenges-and-opportunities', '_blank');
+              } else if (article.id === 4) {
+                window.open('https://tontoton.com/how-to-raise-waste-management-awareness/', '_blank');
+              } else {
+                setSelectedArticle(article.id);
+              }
+            }}>
                       <div className="space-y-4">
                         <div className="flex items-start justify-between">
                           <div className={`p-3 ${article.bgColor} rounded-xl`}>
@@ -458,17 +387,13 @@ const EducationSection = () => {
                           </p>
                         </div>
                       </div>
-                    </div>
-                  );
-                })}
-              </div>
-            )}
-          </div>
-        )}
+                    </div>;
+          })}
+              </div>}
+          </div>}
 
         {/* Videos Section */}
-        {activeTab === "videos" && (
-          <div className="space-y-6 sm:space-y-8 animate-fade-in">
+        {activeTab === "videos" && <div className="space-y-6 sm:space-y-8 animate-fade-in">
             <div className="text-center space-y-2 px-4">
               <h3 className="text-xl sm:text-2xl font-bold text-foreground">Video Course Modules</h3>
               <p className="text-sm sm:text-base text-muted-foreground">
@@ -477,16 +402,9 @@ const EducationSection = () => {
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
-              {videos.map((video) => (
-                <div key={video.id} className="card-eco space-y-3 sm:space-y-4">
+              {videos.map(video => <div key={video.id} className="card-eco space-y-3 sm:space-y-4">
                   <div className="aspect-video rounded-xl overflow-hidden bg-muted">
-                    <iframe
-                      src={`https://www.youtube.com/embed/${video.embedId}`}
-                      title={video.title}
-                      className="w-full h-full"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    />
+                    <iframe src={`https://www.youtube.com/embed/${video.embedId}`} title={video.title} className="w-full h-full" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
                   </div>
                   
                   <div className="space-y-3">
@@ -496,12 +414,7 @@ const EducationSection = () => {
                         <p className="text-sm text-muted-foreground">{video.description}</p>
                       </div>
                       
-                      <Button
-                        size="sm"
-                        variant={completedVideos.includes(video.id) ? "default" : "outline"}
-                        onClick={() => toggleVideoComplete(video.id)}
-                        className={completedVideos.includes(video.id) ? "bg-accent-green hover:bg-accent-green/90" : ""}
-                      >
+                      <Button size="sm" variant={completedVideos.includes(video.id) ? "default" : "outline"} onClick={() => toggleVideoComplete(video.id)} className={completedVideos.includes(video.id) ? "bg-accent-green hover:bg-accent-green/90" : ""}>
                         <CheckCircle className="h-4 w-4" />
                       </Button>
                     </div>
@@ -516,36 +429,16 @@ const EducationSection = () => {
                       </span>
                     </div>
                   </div>
-                </div>
-              ))}
+                </div>)}
             </div>
 
             {/* Progress Summary */}
-            <div className="bg-gradient-to-r from-primary/5 to-primary-light/5 rounded-2xl p-6 border border-primary/10">
-              <div className="text-center space-y-2">
-                <h4 className="text-lg font-semibold text-foreground">Your Progress</h4>
-                <div className="text-3xl font-bold text-primary">
-                  {completedVideos.length}/{videos.length}
-                </div>
-                <p className="text-sm text-muted-foreground">modules completed</p>
-                <div className="w-full bg-muted rounded-full h-2 mt-4">
-                  <div 
-                    className="bg-gradient-to-r from-primary to-primary-light rounded-full h-2 transition-all duration-500"
-                    style={{ width: `${(completedVideos.length / videos.length) * 100}%` }}
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
+            
+          </div>}
 
         {/* Quiz Button */}
         <div className="text-center animate-fade-in px-4">
-          <Button
-            onClick={() => setShowQuiz(true)}
-            size="lg"
-            className="w-full sm:w-auto bg-green-600 hover:bg-green-700 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
-          >
+          <Button onClick={() => setShowQuiz(true)} size="lg" className="w-full sm:w-auto bg-green-600 hover:bg-green-700 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
             <Brain className="h-5 w-5 sm:h-6 sm:w-6 mr-2 sm:mr-3" />
             Test Your Knowledge Now
           </Button>
@@ -558,29 +451,22 @@ const EducationSection = () => {
               <DialogTitle className="text-xl sm:text-2xl font-bold text-center text-green-600 pr-8">
                 Waste Management Quiz
               </DialogTitle>
-              <Button
-                variant="ghost"
-                size="sm"
-                className="absolute right-0 top-0 h-7 w-7 sm:h-8 sm:w-8 p-0"
-                onClick={() => resetQuiz()}
-              >
+              <Button variant="ghost" size="sm" className="absolute right-0 top-0 h-7 w-7 sm:h-8 sm:w-8 p-0" onClick={() => resetQuiz()}>
                 <X className="h-3 w-3 sm:h-4 sm:w-4" />
               </Button>
             </DialogHeader>
 
-            {!quizComplete ? (
-              <div className="space-y-6">
+            {!quizComplete ? <div className="space-y-6">
                 {/* Progress Bar */}
                 <div className="space-y-2">
                   <div className="flex justify-between text-sm text-muted-foreground">
                     <span>Question {currentQuestion + 1} of {quizQuestions.length}</span>
-                    <span>{Math.round(((currentQuestion + 1) / quizQuestions.length) * 100)}%</span>
+                    <span>{Math.round((currentQuestion + 1) / quizQuestions.length * 100)}%</span>
                   </div>
                   <div className="w-full bg-muted rounded-full h-2">
-                    <div 
-                      className="bg-green-600 rounded-full h-2 transition-all duration-300"
-                      style={{ width: `${((currentQuestion + 1) / quizQuestions.length) * 100}%` }}
-                    />
+                    <div className="bg-green-600 rounded-full h-2 transition-all duration-300" style={{
+                  width: `${(currentQuestion + 1) / quizQuestions.length * 100}%`
+                }} />
                   </div>
                 </div>
 
@@ -592,41 +478,23 @@ const EducationSection = () => {
 
                   {/* Answer Options */}
                   <div className="space-y-3">
-                    {quizQuestions[currentQuestion].options.map((option, index) => (
-                      <Button
-                        key={index}
-                        variant={userAnswers[currentQuestion] === index ? "default" : "outline"}
-                        className={`w-full justify-start text-left p-4 h-auto ${
-                          userAnswers[currentQuestion] === index 
-                            ? "bg-green-600 hover:bg-green-700 text-white" 
-                            : "hover:bg-green-50"
-                        }`}
-                        onClick={() => handleQuizAnswer(index)}
-                      >
+                    {quizQuestions[currentQuestion].options.map((option, index) => <Button key={index} variant={userAnswers[currentQuestion] === index ? "default" : "outline"} className={`w-full justify-start text-left p-4 h-auto ${userAnswers[currentQuestion] === index ? "bg-green-600 hover:bg-green-700 text-white" : "hover:bg-green-50"}`} onClick={() => handleQuizAnswer(index)}>
                         <span className="font-medium mr-3">
                           {String.fromCharCode(65 + index)}.
                         </span>
                         {option}
-                      </Button>
-                    ))}
+                      </Button>)}
                   </div>
 
                   {/* Next Button */}
                   <div className="flex justify-center pt-4">
-                    <Button
-                      onClick={handleNextQuestion}
-                      disabled={userAnswers[currentQuestion] === undefined}
-                      size="lg"
-                      className="bg-green-600 hover:bg-green-700 text-white px-8"
-                    >
+                    <Button onClick={handleNextQuestion} disabled={userAnswers[currentQuestion] === undefined} size="lg" className="bg-green-600 hover:bg-green-700 text-white px-8">
                       {currentQuestion < quizQuestions.length - 1 ? "Next Question" : "See Results"}
                     </Button>
                   </div>
                 </div>
-              </div>
-            ) : (
-              /* Quiz Results */
-              <div className="text-center space-y-6">
+              </div> : (/* Quiz Results */
+          <div className="text-center space-y-6">
                 <div className="space-y-4">
                   <div className="text-6xl">
                     {getResultMessage(calculateScore()).emoji}
@@ -643,33 +511,21 @@ const EducationSection = () => {
                 </div>
 
                 <div className="flex gap-4 justify-center">
-                  <Button
-                    onClick={resetQuiz}
-                    variant="outline"
-                    size="lg"
-                    className="px-6"
-                  >
+                  <Button onClick={resetQuiz} variant="outline" size="lg" className="px-6">
                     Close
                   </Button>
-                  <Button
-                    onClick={() => {
-                      setCurrentQuestion(0);
-                      setUserAnswers([]);
-                      setQuizComplete(false);
-                    }}
-                    size="lg"
-                    className="bg-green-600 hover:bg-green-700 text-white px-6"
-                  >
+                  <Button onClick={() => {
+                setCurrentQuestion(0);
+                setUserAnswers([]);
+                setQuizComplete(false);
+              }} size="lg" className="bg-green-600 hover:bg-green-700 text-white px-6">
                     Take Quiz Again
                   </Button>
                 </div>
-              </div>
-            )}
+              </div>)}
           </DialogContent>
         </Dialog>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default EducationSection;
